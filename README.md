@@ -20,3 +20,5 @@
 ## 接口参数
 
 请查看官网介绍：[https://push.i-i.me/](https://push.i-i.me/)
+
+关注频道：[https://t.me/pushme_channel](https://t.me/pushme_channel)
