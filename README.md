@@ -23,7 +23,7 @@
 -|-|-|-
 |![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi3.jpg)||
 
-## 图片预览
+## APP预览
 
 |![image](https://github.com/yafoo/pushme/blob/master/img/home.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/screen.jpg)|
 -|-
