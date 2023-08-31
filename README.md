@@ -17,6 +17,14 @@
 4. 锁定任务栏
 5. 允许消息通知
 
+## 图片预览
+
+|||
+-|-
+|![image](https://github.com/yafoo/pushme/blob/master/img/home.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/screen.jpg)|
+|![image](https://github.com/yafoo/pushme/blob/master/img/message.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/send.jpg)|
+|![image](https://github.com/yafoo/pushme/blob/master/img/setting.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/notification.jpg)|
+
 ## 接口参数
 
 请查看官网介绍：[https://push.i-i.me/](https://push.i-i.me/)
