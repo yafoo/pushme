@@ -11,11 +11,18 @@
 
 因为各安卓系统杀后台严重，所以尽量给与app最大权限：
 
-1. 允许后台运行
-2. 允许自启动
-3. 允许后台高耗电（实际测试，并不高耗电）
-4. 锁定任务栏
-5. 允许消息通知
+1. 权限管理：允许自启动、后台运行
+2. 电池耗电管理：允许后台高耗电（实际测试，并不高耗电，见下图）
+3. 通知管理：允许消息通知
+
+> 通过以上三项设置，基本可以保证消息服务24小时不中断。目前我测试，只有 `HarmonyOS2`、`OriginOS3睡眠模式` 会造成消息服务中断，不过还好PushMe支持离线消息。
+
+#### 设置案例（vivo origin os3）
+
+|||||
+-|-|-|-
+|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
+|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi3.jpg)||
 
 ## 图片预览
 
