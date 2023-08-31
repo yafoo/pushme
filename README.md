@@ -19,16 +19,14 @@
 
 #### 设置案例（vivo origin os3）
 
-|||||
--|-|-|-
 |![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
+-|-|-|-
 |![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi3.jpg)||
 
 ## 图片预览
 
-|||
--|-
 |![image](https://github.com/yafoo/pushme/blob/master/img/home.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/screen.jpg)|
+-|-
 |![image](https://github.com/yafoo/pushme/blob/master/img/message.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/send.jpg)|
 |![image](https://github.com/yafoo/pushme/blob/master/img/setting.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/notification.jpg)|
 
