@@ -3,7 +3,7 @@
 
 ## 接口参数
 
-请在官网查看：[https://push.i-i.me/](https://push.i-i.me/)
+请到官网查看：[https://push.i-i.me/](https://push.i-i.me/)
 
 关注频道动态：[https://t.me/pushme_channel](https://t.me/pushme_channel)
 
