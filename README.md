@@ -11,7 +11,7 @@
 
 系统要求：Android7+
 
-下载地址：[Github](https://github.com/yafoo/pushme/releases) 或 [Gitee](https://gitee.com/yafu/pushme/releases)
+下载地址：[Github](https://github.com/yafoo/pushme/releases/latest) 或 [Gitee](https://gitee.com/yafu/pushme/releases/latest)
 
 ## 手机设置
 
