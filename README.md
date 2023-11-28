@@ -21,9 +21,21 @@
 2. 电池耗电管理：允许后台高耗电（实际测试，并不高耗电，见下图）
 3. 通知管理：允许消息通知
 
-> 通过以上三项设置，基本可以保证消息服务24小时不中断。目前我测试，只有 `HarmonyOS2`、`OriginOS3睡眠模式` 会造成消息服务中断，不过还好PushMe支持离线消息。
+> 以上三项设置后，可在多任务页面把APP划掉，只留服务在后台运行。建议把通知设置里StateChannel也打开，方便查看服务是否在线，如果想关闭通道通知，可以在PushMe左上角设置里关闭。
 
-#### 设置案例（vivo origin os3）
+### OriginOS 3
+经实测，Vivo OriginOS3系统，睡眠模式下，会造成后台被杀，如果想保持24小时在线，需关闭睡眠模式（在电池管理->更多设置->睡眠模式），经实测，关闭睡眠模式后，夜里其他应用（如微信、头条）可能会耗电。
+
+### MIUI 14
+经实测，小米MIUI14系统，需在多任务页面，长按PushMe APP锁定后台，锁定后，即可把应用划拉掉。
+
+### HarmonyOS 2
+经实测，华为HarmonyOS2，无法保证应用后台运行。
+
+### 其他系统
+其他系统未实测，欢迎提供有问题的系统案例。
+
+设置案例（vivo origin os3）
 
 |![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
 -|-|-|-
