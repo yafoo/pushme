@@ -35,7 +35,7 @@
 ### 其他系统
 其他系统未实测，欢迎提供有问题的系统案例。
 
-设置案例（vivo origin os3）
+## 设置案例（vivo origin os3）
 
 |![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
 -|-|-|-
