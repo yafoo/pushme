@@ -1,5 +1,5 @@
 # PushMe
-> PushMe，一个简单轻量的Android消息通知客户端！
+> PushMe，一个简单轻量的Android消息通知客户端！支持插件，支持自部署服务。
 
 ## 接口参数
 
