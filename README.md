@@ -1,6 +1,13 @@
 # PushMe
 > PushMe，一个简单轻量的Android消息通知客户端！支持插件，支持自部署服务。
 
+## APP预览
+
+|![image](./assets/1.jpg)|![image](./assets/2.jpg)|![image](./assets/3.jpg)|![image](./assets/4.jpg)|
+-|-|-|-
+|![image](./assets/5.jpg)|![image](./assets/6.jpg)|![image](./assets/7.jpg)|![image](./assets/8.jpg)|
+|![image](./assets/9.jpg)|![image](./assets/10.jpg)|![image](./assets/11.jpg)|![image](./assets/12.jpg)|
+
 ## 接口参数
 
 请到官网查看：[https://push.i-i.me/](https://push.i-i.me/)
@@ -16,6 +23,8 @@
 ## 手机设置
 
 因为各安卓系统杀后台严重，所以尽量给与app最大权限：
+
+提示：可在`PushMe`->`权限设置`中点击设置权限。
 
 1. 权限管理：允许自启动、后台运行
 2. 电池耗电管理：允许后台高耗电（实际测试，并不高耗电，见下图）
@@ -37,15 +46,3 @@
 
 ### 其他系统
 其他系统未实测，欢迎提供有问题的系统案例。
-
-## 设置案例（vivo origin os3）
-
-|![image](./setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
--|-|-|-
-|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi3.jpg)||
-
-## APP预览
-
-|![image](https://github.com/yafoo/pushme/blob/master/img/notification.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/home.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/message.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/send.jpg)|
--|-|-|-
-|![image](https://github.com/yafoo/pushme/blob/master/img/screen.jpg)|![image](https://github.com/yafoo/pushme/blob/master/img/setting.jpg)|||
