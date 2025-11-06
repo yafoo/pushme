@@ -40,7 +40,7 @@
 
 ## 设置案例（vivo origin os3）
 
-|![image](./blob/master/setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
+|![image](./setting/quanxian.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/quanxian2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/dianchi24.jpg)|
 -|-|-|-
 |![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi2.jpg)|![image](https://github.com/yafoo/pushme/blob/master/setting/tongzhi3.jpg)||
 
