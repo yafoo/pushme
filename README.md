@@ -1,48 +1,206 @@
-# PushMe
-> PushMe，一个简单轻量的Android消息通知客户端！支持插件，支持自部署服务。
+# PushMe - Android 消息通知客户端
 
-## APP预览
+<p align="center">
+  <strong>简单 · 轻量 · 支持插件 · 可自部署</strong>
+</p>
 
-|![image](./assets/1.jpg)|![image](./assets/2.jpg)|![image](./assets/3.jpg)|![image](./assets/4.jpg)|
--|-|-|-
-|![image](./assets/5.jpg)|![image](./assets/6.jpg)|![image](./assets/7.jpg)|![image](./assets/8.jpg)|
-|![image](./assets/9.jpg)|![image](./assets/10.jpg)|![image](./assets/11.jpg)|![image](./assets/12.jpg)|
+<p align="center">
+  <a href="https://github.com/yafoo/pushme/releases/latest">
+    <img src="https://img.shields.io/github/v/release/yafoo/pushme?label=Latest%20Release" alt="Latest Release">
+  </a>
+  <a href="https://github.com/yafoo/pushme">
+    <img src="https://img.shields.io/badge/Android-7.0%2B-brightgreen" alt="Android Version">
+  </a>
+  <a href="https://t.me/pushme_channel">
+    <img src="https://img.shields.io/badge/Telegram-Channel-blue" alt="Telegram Channel">
+  </a>
+</p>
 
-## 接口参数
+---
 
-请到官网查看：[https://push.i-i.me/](https://push.i-i.me/)
+## 📱 项目简介
 
-关注频道动态：[https://t.me/pushme_channel](https://t.me/pushme_channel)
+PushMe 是一款专为 Android 设计的轻量级消息通知客户端，帮助你及时接收各类推送消息。
 
-## 下载安装
+### ✨ 核心特性
 
-系统要求：Android7+
+- **🔌 插件功能**：支持消息插件，消息灵活二次处理
+- **🏠 自部署服务**：支持私有化部署，数据完全掌控
+- **⚡ 轻量高效**：资源占用低，后台运行稳定
+- **📲 广泛兼容**：支持 Android 7.0 及以上版本
+- **🔔 状态监控**：提供 StateChannel 通道，实时查看服务在线状态
 
-下载地址：[Github](https://github.com/yafoo/pushme/releases/latest) 或 [Gitee](https://gitee.com/yafu/pushme/releases/latest)
+---
 
-## 手机设置
+## 🖼️ 应用预览
 
-因为各安卓系统杀后台严重，所以尽量给与app最大权限：
+<table>
+  <tr>
+    <td><img src="./assets/1.jpg" width="200"/></td>
+    <td><img src="./assets/2.jpg" width="200"/></td>
+    <td><img src="./assets/3.jpg" width="200"/></td>
+    <td><img src="./assets/4.jpg" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="./assets/5.jpg" width="200"/></td>
+    <td><img src="./assets/6.jpg" width="200"/></td>
+    <td><img src="./assets/7.jpg" width="200"/></td>
+    <td><img src="./assets/8.jpg" width="200"/></td>
+  </tr>
+  <tr>
+    <td><img src="./assets/9.jpg" width="200"/></td>
+    <td><img src="./assets/10.jpg" width="200"/></td>
+    <td><img src="./assets/11.jpg" width="200"/></td>
+    <td><img src="./assets/12.jpg" width="200"/></td>
+  </tr>
+</table>
 
-提示：可在`PushMe`->`权限设置`中点击设置权限。
+---
 
-1. 权限管理：允许自启动、后台运行
-2. 电池耗电管理：允许后台高耗电（实际测试，并不高耗电，见下图）
-3. 通知管理：允许消息通知
-4. Android12用户，需开启APP的alerm闹钟权限
-5. 部分手机如果无法保持后台，请在多任务页面锁定应用试试
-6. 部分手机需要关闭后台网络优化，否则会被切断后台网路连接
+## 📥 下载安装
 
-> 以上三项设置后，可在多任务页面把APP划掉，只留服务在后台运行。建议把通知设置里StateChannel也打开，方便查看服务是否在线，如果想关闭通道通知，可以在PushMe左上角设置里关闭。
+### 系统要求
 
-### OriginOS 3
-经实测，Vivo OriginOS3系统，睡眠模式下，会造成后台被杀，如果想保持24小时在线，需关闭睡眠模式（在电池管理->更多设置->睡眠模式），经实测，关闭睡眠模式后，夜里其他应用（如微信、头条）可能会耗电。
+- **Android 版本**：7.0 及以上
 
-### MIUI 14
-经实测，小米MIUI14系统，需在多任务页面，长按PushMe APP锁定后台，锁定后，即可把应用划拉掉。
+### 下载渠道
 
-### HarmonyOS 2
-经实测，华为HarmonyOS2，无法保证应用后台运行。
+| 平台 | 下载地址 |
+|------|----------|
+| GitHub | [点击下载最新版本](https://github.com/yafoo/pushme/releases/latest) |
+| Gitee（国内） | [点击下载最新版本](https://gitee.com/yafu/pushme/releases/latest) |
 
-### 其他系统
-其他系统未实测，欢迎提供有问题的系统案例。
+---
+
+## 🔧 接口文档
+
+详细的 API 接口参数说明，请访问官方网站：
+
+👉 [https://push.i-i.me/](https://push.i-i.me/)
+
+---
+
+## ⚙️ 手机权限设置指南
+
+> ⚠️ **重要提示**：由于 Android 系统对后台应用的严格管理，为确保消息能及时送达，请按照以下步骤配置应用权限。
+
+### 快速设置
+
+在 PushMe 应用中，进入 **`权限设置`** 页面，可快速跳转至相关设置项。
+
+### 详细配置步骤
+
+#### 1️⃣ 基础权限配置
+
+- ✅ **自启动权限**：允许应用开机自启
+- ✅ **后台运行权限**：允许应用在后台持续运行
+- ✅ **通知权限**：允许发送和显示通知
+- ✅ **电池优化豁免**：设置为"允许后台高耗电"（实际功耗很低）
+
+#### 2️⃣ 系统特定配置
+
+##### Android 12 用户
+- 🔔 必须开启 **闹钟（Alarm）权限**
+
+##### 多任务锁定（推荐）
+- 📌 在多任务页面长按 PushMe，选择"锁定"或点击锁图标
+- 锁定后可安全清理其他后台应用
+
+##### 网络优化设置
+- 🌐 部分机型需关闭"后台网络优化"或"智能网络加速"
+- 防止系统在息屏后切断网络连接
+
+---
+
+## 📱 各品牌系统适配说明
+
+### 🟢 Vivo - OriginOS 3
+
+**问题**：睡眠模式会导致后台被杀
+
+**解决方案**：
+```
+设置 → 电池管理 → 更多设置 → 睡眠模式 → 关闭
+```
+
+**注意事项**：
+- ⚠️ 关闭睡眠模式后，夜间其他应用（如微信、今日头条）可能会增加耗电
+- 建议权衡消息及时性与电量消耗
+
+---
+
+### 🟢 Xiaomi - MIUI 14
+
+**解决方案**：
+```
+1. 打开多任务页面
+2. 长按 PushMe 应用卡片
+3. 点击"锁定"按钮（锁图标）
+4. 锁定后即可正常清理其他应用
+```
+
+---
+
+### 🔴 Huawei - HarmonyOS 2
+
+**现状**：经实测，HarmonyOS 2 无法保证应用稳定后台运行
+
+**建议**：
+- 尝试上述所有权限设置
+- 如仍无法解决，可能需要考虑升级系统或使用其他设备
+
+---
+
+### 📋 其他系统
+
+其他品牌系统暂未进行详细测试，欢迎反馈遇到的问题。
+
+**通用建议**：
+1. 给予应用最大权限（自启动、后台运行、通知）
+2. 关闭电池优化
+3. 在多任务页面锁定应用
+4. 关闭后台网络优化
+
+---
+
+## 💡 使用技巧
+
+### 保持服务在线的最佳实践
+
+1. **完成上述权限设置**
+2. **开启 StateChannel 通知**
+   - 位置：PushMe 左上角设置菜单
+   - 作用：实时监控服务连接状态
+   - 如不需要可在设置中关闭
+
+3. **清理后台时的正确操作**
+   - 完成权限设置和多任务锁定后
+   - 可以安全地从多任务页面划掉 PushMe
+   - 服务会继续在后台运行
+
+---
+
+## 📞 获取帮助
+
+### 官方渠道
+
+- 🌐 **官方网站**：[https://push.i-i.me/](https://push.i-i.me/)
+- 📢 **Telegram 频道**：[https://t.me/pushme_channel](https://t.me/pushme_channel)
+- 💬 **问题反馈**：[GitHub Issues](https://github.com/yafoo/pushme/issues)
+
+### 常见问题
+
+**Q: 为什么收不到消息推送？**  
+A: 请检查是否完成了所有权限设置，特别是电池优化和多任务锁定。
+
+**Q: 应用耗电严重吗？**  
+A: 实际测试显示功耗很低，"允许后台高耗电"只是防止系统杀进程的设置，并非真的耗电。
+
+**Q: 可以自己部署服务端吗？**  
+A: 可以，PushMe 支持私有化部署，具体方法请参考官网文档。
+
+---
+
+<p align="center">
+  <sub>Made with ❤️ by <a href="https://github.com/yafoo">yafoo</a></sub>
+</p>
