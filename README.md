@@ -14,6 +14,9 @@
   <a href="https://t.me/pushme_channel">
     <img src="https://img.shields.io/badge/Telegram-Channel-blue" alt="Telegram Channel">
   </a>
+  <a href="./assets/wechat-group.jpg">
+    <img src="https://img.shields.io/badge/微信交流群-green" alt="WeChat Group">
+  </a>
 </p>
 
 ---
@@ -236,6 +239,9 @@ graph TB
 - 🌐 **官方网站**：[https://push.i-i.me/](https://push.i-i.me/)
 - 📢 **Telegram 频道**：[https://t.me/pushme_channel](https://t.me/pushme_channel)
 - 💬 **问题反馈**：[GitHub Issues](https://github.com/yafoo/pushme/issues)
+- 💬 **微信交流群**：
+
+  <img src="./assets/wechat-group.jpg" width="200"/>
 
 ### 常见问题
 
