@@ -1,0 +1,7 @@
+{
+  "_说明": "配置文件模板。复制为 pushme.config.json 后填入自己的密钥即可。",
+
+  "push_key": "在 App 内获取的永久密钥",
+  "temp_key": "",
+  "url": ""
+}

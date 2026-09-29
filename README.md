@@ -130,6 +130,68 @@ graph TB
 
 👉 [https://push.i-i.me/](https://push.i-i.me/)
 
+### 快速上手
+
+通过 HTTP 请求即可发送消息，**GET 或 POST 均可**：
+
+```bash
+# GET
+https://push.i-i.me/?push_key=你的KEY&title=标题&content=内容
+
+# POST
+curl -d "push_key=你的KEY&title=标题&content=内容" https://push.i-i.me/
+```
+
+返回值为 `success` 表示发送成功，否则为失败原因。
+
+### 密钥类型
+
+PushMe 支持两种密钥，**二选一**（使用 `temp_key` 时无需传 `push_key`）：
+
+| 密钥 | 说明 |
+|------|------|
+| `push_key` | 永久推送密钥，在 App 内获取，日常使用 |
+| `temp_key` | 临时推送密钥，在 App 内获取，时效短 |
+
+> ✅ **官方服务与自建服务均支持 `push_key` 和 `temp_key`**（自建服务可在 Web 管理界面的 PushKey 页面配置）。
+
+### 消息类型
+
+消息类型分为**通知消息**与**数据消息**两大类：
+
+| 类别 | 类型 | 是否发出通知 | 用途 |
+|------|------|:---:|------|
+| **通知消息** | `text` `markdown` `html` `url` | ✅ 会 | 告警、提醒、任务通知等需及时感知的消息 |
+| **数据消息** | `data` `markdata` `chart` `echarts` `svg` `note` | ❌ 不会 | 手机端数据小屏，展示实时数值、图表、仪表盘 |
+
+> ⚠️ **注意**：数据消息**不会发出状态栏通知**，仅用于数据展示。若需提醒用户，请使用通知消息类型。
+
+### 兼容企业微信 / 钉钉 / 飞书
+
+接口兼容企业微信、钉钉、飞书群机器人格式，**直接替换 URL 即可迁移**，无需改动代码。
+
+---
+
+## 🧩 AI 技能（Skills）
+
+本仓库提供开箱即用的 AI Agent 技能，让 AI 助手直接帮你编写、调试 PushMe 推送代码：
+
+| 技能 | 目录 | 说明 |
+|------|------|------|
+| 发送消息 | [`skill/pushme-send-message`](./skill/pushme-send-message) | 完整的接口用法、密钥说明、消息类型选择指引与排查手册 |
+
+技能遵循 Agent Skills 规范（`SKILL.md`）。将 `skill/pushme-send-message` 复制到你的技能目录即可使用，例如：
+
+```bash
+# WorkBuddy / 通用项目级技能目录
+cp -r skill/pushme-send-message .workbuddy-ai/skills/
+
+# Claude Code
+cp -r skill/pushme-send-message .claude/skills/
+```
+
+> 💡 技能内置了「通知消息 vs 数据消息」的判断规则——数据消息不弹通知，选错会导致消息静默无提示。
+
 ---
 
 ## ⚙️ 手机权限设置指南

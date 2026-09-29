@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PushMe 发送消息技能配置",
+  "description": "配置 PushMe 推送密钥与接口地址。url 留空时使用官方接口 https://push.i-i.me",
+  "type": "object",
+  "properties": {
+    "push_key": {
+      "type": "string",
+      "title": "永久推送密钥",
+      "description": "在 PushMe App 内获取（左上角菜单 → 获取 push_key）。与 temp_key 二选一。",
+      "default": ""
+    },
+    "temp_key": {
+      "type": "string",
+      "title": "临时推送密钥",
+      "description": "在 App 内获取，时效短。与 push_key 二选一；两者都填时优先使用 temp_key。",
+      "default": ""
+    },
+    "url": {
+      "type": "string",
+      "title": "接口地址",
+      "description": "留空则使用官方接口 https://push.i-i.me。自建服务填 http://服务器:3010，局域网直达填 http://设备IP:端口。",
+      "default": ""
+    }
+  },
+  "additionalProperties": true
+}

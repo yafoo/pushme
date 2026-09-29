@@ -1,0 +1,9 @@
+# 本地凭据，切勿提交
+pushme.config.json
+!pushme.config.example.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
