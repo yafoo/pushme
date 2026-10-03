@@ -14,7 +14,7 @@
   <a href="https://t.me/pushme_channel">
     <img src="https://img.shields.io/badge/Telegram-Channel-blue" alt="Telegram Channel">
   </a>
-  <a href="./assets/wechat-group.jpg">
+  <a href="./assets/wechat-group.jpg?v=2">
     <img src="https://img.shields.io/badge/微信交流群-green" alt="WeChat Group">
   </a>
 </p>
@@ -303,7 +303,7 @@ cp -r skill/pushme-send-message .claude/skills/
 - 💬 **问题反馈**：[GitHub Issues](https://github.com/yafoo/pushme/issues)
 - 💬 **微信交流群**：
 
-  <img src="./assets/wechat-group.jpg" width="200"/>
+  <img src="./assets/wechat-group.jpg?v=2" width="200"/>
 
 ### 常见问题
 
