@@ -24,8 +24,7 @@
 
 <p align="center">
   <a href="https://push.i-i.me">官网</a> ·
-  <a href="https://github.com/yafoo/pushme-plugin">插件仓库</a> ·
-  当前版本 <code>5.2.0</code>
+  <a href="https://github.com/yafoo/pushme-plugin">插件仓库</a>
 </p>
 
 > PushMe is a lightweight Android push notification client built on MQTT.
