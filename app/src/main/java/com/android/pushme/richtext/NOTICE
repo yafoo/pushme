@@ -1,0 +1,43 @@
+compose-richtext
+===============
+
+This directory contains source code derived from compose-richtext.
+
+  Upstream:  https://github.com/halilozercan/compose-richtext
+  License:   Apache License 2.0
+  Copyright: Copyright 2025 Halil Ozercan
+
+A copy of the Apache License 2.0 is provided in the file LICENSE in this
+same directory.
+
+Modifications
+-------------
+This project copied a subset of the upstream modules and changed them.
+Pursuant to section 4(b) of the Apache License 2.0, the changes are listed
+here:
+
+  1. Package renamed from `com.halilibo.richtext.*` to
+     `com.android.pushme.richtext.*`; all internal imports were updated
+     accordingly.
+  2. Only two upstream modules were imported:
+       - richtext-ui            -> ./ui
+       - richtext-markdown      -> ./markdown
+     The `richtext-ui-material`, `richtext-ui-material3`, `richtext-commonmark`,
+     `richtext-printing` and slideshow modules were NOT copied.
+  3. Material 3 components are used directly instead of the upstream
+     Material/Material3 wrapper modules; theme configuration is wired to this
+     app's own color scheme (`ui/theme`) rather than to an upstream theme.
+  4. Remote images are loaded through Coil (the app's existing image loader)
+     instead of an upstream-specific image component.
+  5. Table rendering was adapted to a Compose layout that fits the message
+     bubble width; `SimpleTableLayout` tolerates uneven rows.
+  6. Several `@Composable` entry points were trimmed to the parameters this
+     app actually uses, and KDoc/comments were rewritten in Chinese.
+  7. `util/UUID.kt` provides the id generator required by
+     `ui/string/RichTextString.kt` (the upstream platform-specific UUID
+     utilities were not copied).
+
+Upstream code that was not modified remains under the original copyright.
+
+If you are looking for the canonical library, use the upstream project or
+its published Maven artifacts rather than this copy.

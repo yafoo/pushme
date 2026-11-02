@@ -1,0 +1,125 @@
+PushMe
+Copyright 2023-2026 yafu
+
+This product includes software developed by third parties. The following
+attribution notices are provided as required by the respective licenses.
+A copy of the Apache License 2.0 is included in the file LICENSE.
+
+===========================================================================
+1. compose-richtext  (derived source code, NOT a binary dependency)
+===========================================================================
+Source:    https://github.com/halilozercan/compose-richtext
+License:   Apache License 2.0
+Copyright: Copyright 2025 Halil Ozercan
+
+The directory app/src/main/java/com/android/pushme/richtext/ contains code
+derived from compose-richtext. Modifications made by this project:
+
+  - repackaged from com.halilibo.richtext to com.android.pushme.richtext;
+  - reduced to the richtext-ui and richtext-markdown modules actually used
+    by the app; the material / material3 / printing / slideshow modules were
+    not imported;
+  - adapted to the app's Material 3 theme and to the app's own markdown
+    feature set.
+
+A copy of the Apache License 2.0 for this directory is provided at
+app/src/main/java/com/android/pushme/richtext/LICENSE.
+
+===========================================================================
+2. Apache ECharts
+===========================================================================
+Source:    https://echarts.apache.org/
+License:   Apache License 2.0
+Copyright: Copyright 2017-2025 The Apache Software Foundation
+
+Bundled as a web asset at app/src/main/assets/echarts.min.js and used to
+render the "echarts" message type inside a WebView.
+
+===========================================================================
+3. Eclipse Paho MQTT Client
+===========================================================================
+Source:    https://github.com/eclipse-paho/paho.mqtt.java
+Version:   1.2.5
+License:   Eclipse Distribution License 1.0 (BSD 3-Clause)
+           or Eclipse Public License 2.0 -- dual licensed
+Copyright: Copyright (c) Eclipse Foundation, Inc.
+
+Distributed unmodified as app/libs/org.eclipse.paho.client.mqttv3-1.2.5.jar.
+This project elects the Eclipse Distribution License 1.0 (EDL-1.0).
+See app/libs/README.md for details.
+
+===========================================================================
+4. QuickJS and quickjs-android
+===========================================================================
+quickjs-android: https://github.com/taoweiji/quickjs-android
+License:         Apache License 2.0
+Copyright:       Copyright taoweiji
+
+QuickJS engine (bundled inside quickjs-android):
+                 https://bellard.org/quickjs/
+License:         MIT License
+Copyright:       Copyright (c) 2017-2021 Fabrice Bellard
+
+===========================================================================
+5. commonmark-java
+===========================================================================
+Source:    https://github.com/commonmark/commonmark-java
+License:   BSD 2-Clause "Simplified" License
+Copyright: Copyright (c) 2015, Atlassian Pty Ltd
+
+Used together with the GFM tables, strikethrough, autolink and task-list
+extensions.
+
+===========================================================================
+6. AndroidX, Jetpack Compose, Material Components
+===========================================================================
+License:   Apache License 2.0
+Copyright: Copyright The Android Open Source Project
+
+Includes androidx.core, androidx.lifecycle, androidx.activity,
+androidx.compose.*, androidx.navigation, androidx.datastore, androidx.room,
+androidx.work and androidx.test.
+
+===========================================================================
+7. OkHttp
+===========================================================================
+Source:    https://github.com/square/okhttp
+License:   Apache License 2.0
+Copyright: Copyright 2019 Square, Inc.
+
+===========================================================================
+8. Gson
+===========================================================================
+Source:    https://github.com/google/gson
+License:   Apache License 2.0
+Copyright: Copyright 2008 Google Inc.
+
+===========================================================================
+9. Coil
+===========================================================================
+Source:    https://github.com/coil-kt/coil
+License:   Apache License 2.0
+Copyright: Copyright Coil Contributors
+
+===========================================================================
+10. XXPermissions
+===========================================================================
+Source:    https://github.com/getActivity/XXPermissions
+License:   Apache License 2.0
+Copyright: Copyright getActivity
+
+===========================================================================
+11. compose-color-picker
+===========================================================================
+Source:    https://github.com/mhssn95/compose-color-picker
+License:   Apache License 2.0
+Copyright: Copyright Mhssn Alrobily
+
+===========================================================================
+Full license texts
+===========================================================================
+Apache License 2.0 ......... LICENSE (this repository)
+Eclipse Public License 2.0 . https://www.eclipse.org/legal/epl-2.0/
+Eclipse Distribution Lic. 1.0 https://www.eclipse.org/org/documents/edl-v10.php
+BSD 2-Clause ............... https://opensource.org/license/bsd-2-clause
+MIT License ................ https://opensource.org/license/mit

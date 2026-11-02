@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <!--
+    刷新：顺时针 3/4 圆弧 + 缺口处的箭头。
+
+    弧从顶部 (480,220) 顺时针经右、下，到左侧 (220,480) 结束，缺口在左上。
+    箭头贴在弧的**末端** (220,480)，沿切线指向正上 —— 正好指着缺口，
+    读起来就是「转到这里、朝这个方向继续转」。
+
+    别把箭头放回顶部：那里是弧的起点，箭头朝右会和弧的走向看起来脱节，
+    在 26dp 下像是一个歪掉的三角形横插在圆环上。
+  -->
+  <path
+      android:pathData="M480,220 A260,260 0 1 1 220,480"
+      android:strokeColor="@android:color/white"
+      android:strokeWidth="56"
+      android:strokeLineCap="round"
+      android:fillColor="@android:color/transparent"/>
+  <path
+      android:pathData="M165,480 L275,480 L220,360 Z"
+      android:fillColor="@android:color/white"/>
+</vector>

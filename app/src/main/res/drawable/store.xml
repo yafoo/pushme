@@ -1,0 +1,31 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960">
+  <!--
+    插件商店：购物袋轮廓 + 袋内的拼图块（对应浏览器扩展的拼图图标）。
+    轮廓用 stroke、拼图用 fill。
+
+    几何约束（改之前先看这里）：
+    - 内容范围 x 197~763、y 135~824，中心 (480,479.5)，与 viewport 中心重合 ——
+      内容中心偏下的话，在 26dp 的 Icon 里看就是「整体偏下」。
+    - 占幅 566×689（约 59%×72%），比同排 filled 的 Material Symbols 图标（deployed_code 约 75%）略小一点，
+      视觉上才和它们等大 —— 撑到 64%×78% 会显得偏大。
+  -->
+  <path
+      android:pathData="M332,283 A148,148 0 0 1 628,283"
+      android:strokeColor="@android:color/white"
+      android:strokeWidth="64"
+      android:strokeLineCap="round"
+      android:fillColor="@android:color/transparent"/>
+  <path
+      android:pathData="M246,283 L714,283 Q763,283 763,332 L763,775 Q763,824 714,824 L246,824 Q197,824 197,775 L197,332 Q197,283 246,283 Z"
+      android:strokeColor="@android:color/white"
+      android:strokeWidth="64"
+      android:strokeLineCap="round"
+      android:fillColor="@android:color/transparent"/>
+  <path
+      android:pathData="M363,486 L437,486 A49,49 0 0 1 535,486 L597,486 L597,560 A49,49 0 0 0 597,658 L597,683 L363,683 Z"
+      android:fillColor="@android:color/white"/>
+</vector>

@@ -1,0 +1,453 @@
+<resources>
+    <string name="app_name">PushMe</string>
+    <string name="app_slogan">A simple and lightweight Android notification client!</string>
+    <string name="app_website">Website</string>
+    <string name="message_total">Message Total</string>
+
+    <string name="clear">Clear</string>
+    <string name="clear_confirm_title">Confirm clear?</string>
+    <string name="clear_confirm_content">Data is stored locally and cannot be recovered after being cleared!</string>
+    <string name="clear_success_tips">Cleaning successful!</string>
+
+    <string name="push_key_empty">Not yet obtained</string>
+    <string name="temp_key_empty_tips">Please obtain the push_key first, then get the temp_key!</string>
+    <string name="get">Get</string>
+    <string name="get_confirm">Confirm get?</string>
+    <string name="get_confirm_content">After obtaining it, you can use the interface to push messages to your phone.</string>
+    <string name="replace">Reset</string>
+    <string name="replace_confirm">Confirm reset?</string>
+    <string name="replace_confirm_content">After reset, please remember to modify the push api key</string>
+    <string name="get_fail">Failed!</string>
+    <string name="get_success">Success!</string>
+
+    <string name="system">System</string>
+    <string name="send">Send</string>
+    <string name="message">Message</string>
+    <string name="group">Group</string>
+    <string name="detail">Detail</string>
+    <string name="set">Set</string>
+    <string name="enabled">Enabled</string>
+    <string name="unenabled">Unenabled</string>
+    <string name="write">Write</string>
+    <string name="view">View</string>
+    <string name="success">Success</string>
+    <string name="fail">Fail</string>
+    <string name="check_update">Check</string>
+    <string name="checking">Checking..</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="tips">Tips: </string>
+
+    <string name="home_setting">Home Settings</string>
+    <string name="message_setting">Message Settings</string>
+    <string name="pin_group_message_top">Pin Group Messages</string>
+    <string name="no_group_to_group">No Group Message Merge</string>
+    <string name="click_group_message_to">Click Group Message To</string>
+    <string name="list_font_size">List Font Size</string>
+    <string name="auto_load_more">Auto Load More</string>
+    <string name="link_open_method">Link Opening Method</string>
+    <string name="link_tips">Only markdown html and url messages are supported</string>
+    <string name="html_js_support">HTML Message JS Support</string>
+    <string name="message_default_state">Default New Message State</string>
+
+    <string name="service_setting">Service Settings</string>
+    <string name="api_service">API Service</string>
+    <string name="api_verify_key">Verify push_key</string>
+    <string name="api_service_state">API Service State</string>
+    <string name="api_host">Listen Address</string>
+    <string name="api_host_placeholder">0.0.0.0 for all interfaces</string>
+    <string name="api_host_empty_tips">Listen address cannot be empty!</string>
+    <string name="api_port">Listen Port</string>
+    <string name="api_port_placeholder">Default: 3010</string>
+    <string name="api_port_empty_tips">Port cannot be empty!</string>
+    <string name="api_usage_tips">API Usage: GET/POST to http://[address]:[port]/\nParameters: push_key, title, content, date, type\nPOST body supports JSON or form-urlencoded format</string>
+    <string name="service_settings">Message Service</string>
+    <string name="tls_tips">If the connection fails, you can try disabling TLS</string>
+    <string name="self_host">Self-Hosted Server</string>
+    <string name="message_plugin">Message Plugin</string>
+    <string name="message_repost">Message Forwarding</string>
+    <string name="service_foreground">Foreground Service</string>
+    <string name="service_foreground_tips">When enabled, the core service runs as a foreground service with a non-dismissible notification. This greatly reduces MQTT disconnects caused by the system freezing background processes, at the cost of slightly higher battery usage.</string>
+    <string name="mqtt_heartbeat">Heartbeat Interval</string>
+    <string name="mqtt_heartbeat_tips">How often the client confirms with the server that it is still online, from 1 to 20 minutes. A larger value saves battery and data but detects disconnection more slowly. The connection reconnects automatically to apply the change.</string>
+    <string name="service_running">PushMe service is running</string>
+    <string name="service_running_tips">Keeping the message connection alive. Tap to return to the app.</string>
+    <string name="service_state">Service Status</string>
+    <string name="service_state_foreground">Foreground Service</string>
+
+    <string name="notify_listen">System Notification Listening</string>
+    <string name="notify_listen_tips">When enabled, PushMe can read notifications from other apps and forward the ones matching your filter rules to the service. You must first turn on system notification access for this app in the system settings.</string>
+    <string name="notify_listen_permission_tips">Please turn on system notification access for PushMe first!</string>
+    <string name="notify_access">Listen to System Notifications</string>
+    <string name="notify_filter">System Notification Filter</string>
+    <string name="notify_app_filter_mode">App Filter</string>
+    <string name="notify_app_filter_list">Selected Apps</string>
+    <string name="notify_app_filter_list_tips">Whitelist: only the selected apps are forwarded. Blacklist: the selected apps are never forwarded. Selecting nothing means no app restriction.</string>
+    <string name="notify_app_filter_select">Select Apps</string>
+    <string name="notify_app_filter_search">Search app name or package</string>
+    <string name="notify_app_filter_show_system">Show system apps</string>
+    <string name="notify_app_filter_system_tag">System</string>
+    <string name="notify_app_filter_none">None selected</string>
+    <string name="notify_app_filter_count">%1$d selected</string>
+    <string name="notify_app_filter_count_system">%1$d selected (%2$d system)</string>
+    <string name="notify_app_filter_empty">No matching apps</string>
+    <string name="notify_app_filter_clear">Clear</string>
+    <string name="notify_app_filter_clear_success">Selection cleared!</string>
+    <string name="notify_app_filter_loading">Loading app list..</string>
+    <string name="notify_app_filter_self_tips">PushMe never forwards its own notifications, so it is not listed here.</string>
+    <string name="notify_limit">Keywords include</string>
+    <string name="notify_limit_placeholder">Keyword whitelist, multiple keywords separated by |</string>
+    <string name="notify_omit">Keyword exclude</string>
+    <string name="notify_omit_placeholder">Keyword blacklist, multiple keywords separated by |</string>
+    <string name="notify_ignore_ongoing">Ignore Ongoing</string>
+    <string name="notify_ignore_empty">Ignore Empty Content</string>
+    <string name="notify_filter_tips">Filtering order: ignore ongoing - ignore empty - app list - keywords. Apps are matched by exact package name, keywords are matched against title and content.</string>
+
+    <string name="task">Scheduled Tasks</string>
+    <string name="task_tips">When enabled, tasks fire on their cron schedule: each firing is wrapped into a message and handed to plugins. If the type is still task after plugin processing, the message is dropped. Task messages go through the same pipeline as MQTT, API and notification listening, so notification, repost and storage all apply. Alarms are rescheduled after a reboot or an app update. Under Doze an alarm may be delayed by a few minutes but is never dropped; trigger points missed while the device is powered off are not replayed.</string>
+    <string name="task_group">Scheduled</string>
+    <string name="task_add">New Task</string>
+    <string name="task_edit">Edit Task</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_name_placeholder">For example: daily check-in</string>
+    <string name="task_cron">Cron Expression</string>
+    <string name="task_cron_placeholder">*/30 * * * *</string>
+    <string name="task_cron_invalid">Invalid expression format</string>
+    <string name="task_cron_never">This expression never fires</string>
+    <string name="task_cron_tips">5 fields, same as Linux crontab: minute hour day month weekday.\nSupports * for any, 5 for a single value, 1-10 for a range, */5 for a step, 1,3,5 for a list, JAN~DEC for months and SUN~SAT for weekdays.\nExamples: */30 * * * * every 30 minutes; 0 9 * * 1-5 weekdays at 9; 0 0 1 * * the 1st day of each month at midnight.</string>
+    <string name="task_content">Task Content</string>
+    <string name="task_content_placeholder">Content handed to plugins, read it as content</string>
+    <string name="task_enabled">Enable Task</string>
+    <string name="task_test">Send Test Message</string>
+    <string name="task_test_name">Test Task</string>
+    <string name="task_test_tips">Sends the name and content above right now as one trigger, no need to wait for the schedule or save first. It goes through the full plugin pipeline: a message no plugin takes over (type is still task) is discarded.</string>
+    <string name="task_test_sent">Test message sent</string>
+    <string name="task_test_no_plugin">No plugin is enabled, the message would be discarded</string>
+    <string name="task_next_run">Next run</string>
+    <string name="task_last_run">Last run</string>
+    <string name="task_never_run">Never run</string>
+    <string name="task_empty">No tasks yet. Tap the button at the top right to create one.</string>
+    <string name="task_delete">Delete</string>
+    <string name="task_delete_confirm">Delete this task?</string>
+    <string name="task_name_empty">Task name cannot be empty!</string>
+    <string name="task_cron_empty">Cron expression cannot be empty!</string>
+    <string name="task_alarm_permission_tips">Alarms and reminders permission is not granted, tasks may not fire on time</string>
+
+    <string name="app_setting">App Settings</string>
+    <string name="app_language">App Language</string>
+    <string name="app_restart_tips">Please restart the app after switching languages!</string>
+    <string name="app_theme">App Theme</string>
+    <string name="app_color">App Color</string>
+    <string name="current_color">Current Color</string>
+    <string name="select_color">Select</string>
+    <string name="recent_task">System Recent Tasks</string>
+    <string name="status_notify">Status Notification</string>
+    <string name="mute_time_limit">Mute Time Limit</string>
+    <string name="speak_content">Speak Notification Fields</string>
+    <string name="repeat_time">Repeat Notification Interval</string>
+    <string name="message_action">Message Notification Action Button</string>
+
+    <string name="permission_setting">Permission Settings</string>
+    <string name="alarm_reminder">Alarm reminder</string>
+    <string name="auto_start">Auto Start</string>
+    <string name="auto_start_tips">Confirm to Enabled</string>
+    <string name="battery_ignore">Ignore Battery Optimization</string>
+    <string name="notify_permission">Notification Permission</string>
+    <string name="notify_channel">Notification Channel</string>
+    <string name="channel_tips">Ringing, vibration, voice, etc</string>
+    <string name="channel_set">ChannelSetting</string>
+    <string name="speak_set">Speak</string>
+    <string name="repeat_set">Repeat</string>
+    <string name="delete">Delete</string>
+    <string name="delete_success">Delete success!</string>
+    <string name="message_notify">Message Notification</string>
+    <string name="notify_tips">Please enable lock screen notifications, otherwise there may be no sound after the screen is locked</string>
+    <string name="app_lock">App Lock</string>
+    <string name="app_lock_tips">Some mobile phones require settings</string>
+    <string name="permission_tips">Most mobile phones can swipe away multitasking cards after enabling the above permissions</string>
+
+    <string name="other_setting">Other Settings</string>
+    <string name="not_support_self_host">Self-Hosted Not Supported</string>
+    <string name="data_messages">Data Messages</string>
+    <string name="crash_log">Crash Logs</string>
+    <string name="file_manage">File Manager</string>
+    <string name="open">Open</string>
+    <string name="delete_confirm_title">Confirm Delete?</string>
+    <string name="delete_file_confirm">Are you sure you want to delete this file?</string>
+    <string name="empty_directory">Empty directory</string>
+    <string name="file_not_supported">This file type is not supported</string>
+    <string name="open_fail">Open failed</string>
+    <string name="upload_file">Upload File</string>
+    <string name="upload_success">Upload successful!</string>
+    <string name="upload_fail">Upload failed</string>
+    <string name="select_image">Select Image</string>
+    <string name="input_face_name">Please input group name</string>
+    <string name="face_name_exists">Group name already exists</string>
+    <string name="note_add">Add Note</string>
+    <string name="note_edit">Edit Note</string>
+    <string name="note_empty_tips">Title and content cannot both be empty!</string>
+    <string name="note_content_placeholder">Supports Markdown format</string>
+
+    <string name="about_me">About Us</string>
+    <string name="feedback">Feedback/Suggestions</string>
+    <string name="update_log">Update Log</string>
+    <string name="app_version">App Version</string>
+
+    <string name="search_placeholder">Click the icon enable advanced search</string>
+    <string name="theme">Theme</string>
+    <string name="field">Field</string>
+    <string name="status">Status</string>
+    <string name="delete_tips">Are you sure you want to delete all current results? Data is stored locally and cannot be recovered after deletion!</string>
+    <string name="action_title">Confirm</string>
+    <string name="action_success">Success！</string>
+    <string name="action_all">Batch operations</string>
+    <string name="action_tips">Confirm to all current search results </string>
+    <string name="search_results_prev">A total of </string>
+    <string name="search_results_next">results</string>
+    <string name="pull_to_refresh">Pull to refresh</string>
+    <string name="release_refresh">Release refresh</string>
+    <string name="refreshing">Refreshing..</string>
+    <string name="refresh_success">Refresh Success!</string>
+    <string name="loading">Loading..</string>
+    <string name="load_more">Load More</string>
+    <string name="new_messages">New Messages</string>
+    <string name="load_older_messages">Click To Load Older Messages</string>
+
+    <string name="api_url">API URL</string>
+    <string name="send_message">Message Send</string>
+    <string name="message_title">Message Title</string>
+    <string name="message_content">Message Content</string>
+    <string name="type">Type</string>
+    <string name="samples">Samples</string>
+    <string name="send_empty_push_key_tips">Please get the push_key in settings first!</string>
+    <string name="send_empty_title_content_tips">Title and content must be filled in at least one item!</string>
+    <string name="send_empty_api_url_tips">Please enter the API URL of the self-hosted service!</string>
+    <string name="send_fail">Send Failed!</string>
+    <string name="send_success">Send Success!</string>
+
+    <string name="save_success">Save Success!</string>
+    <string name="push_key_empty_tips">push_key cannot be empty!</string>
+    <string name="self_host_empty_tips">The service address cannot be empty!</string>
+    <string name="self_host_error_tips">The service address should be a plain IP address or domain name, without prefixes such as http or MQTT!</string>
+    <string name="self_port_empty_tips">The port number cannot be empty!</string>
+    <string name="self_tls_empty_tips">The certificate content cannot be empty!</string>
+    <string name="push_key_placeholder">Maximum 20 characters</string>
+    <string name="click_get">Get</string>
+    <string name="self_host_address">Service Address</string>
+    <string name="self_host_placeholder">IP address or domain name, supports IPv6; empty to disable.</string>
+    <string name="self_port">Port</string>
+    <string name="self_port_placeholder">Default：3100</string>
+    <string name="self_cert">Certificate Content</string>
+    <string name="self_cert_placeholder">Please enter the string for the self-signed certificate.</string>
+    <string name="self_protocol">Protocol</string>
+    <string name="self_tls">Certificate</string>
+    <string name="get_cert_fail_before">Failure, please confirm </string>
+    <string name="get_cert_fail_after">is accessible?</string>
+    <string name="get_cert">Try Get</string>
+    <string name="get_cert_ing">Getting..</string>
+
+    <string name="plugin_edit">Plugin Edit</string>
+    <string name="confirm_delete">Confirm deletion?</string>
+    <string name="edit_success">Edit Success!</string>
+    <string name="plugin_title">Plugin Name</string>
+    <string name="plugin_title_empty_tips">Please enter the plugin name!</string>
+    <string name="plugin_env">Plugin ENV</string>
+    <string name="enable_success">Enable Success!</string>
+    <string name="disable_success">Disable Success!</string>
+    <string name="add_success">Add Success!</string>
+    <string name="plugin_env_name_exists">The variable name already exists!</string>
+    <string name="plugin_method">Plugin Built-in Method</string>
+
+    <!-- Plugin store -->
+    <string name="plugin_store">Plugin Store</string>
+    <string name="plugin_store_search">Search plugins</string>
+    <string name="plugin_store_refresh">Refresh</string>
+    <string name="plugin_store_refresh_done">Plugin list updated</string>
+    <string name="plugin_store_refresh_failed">Refresh failed: %1$s</string>
+    <string name="plugin_store_install">Install</string>
+    <string name="plugin_store_update">Update</string>
+    <string name="plugin_store_installed">Installed</string>
+    <string name="plugin_store_installing">Installing…</string>
+    <string name="plugin_store_loading">Loading plugin list…</string>
+    <string name="plugin_store_empty">No matching plugin</string>
+    <string name="plugin_store_failed">Failed to load: %1$s</string>
+    <string name="plugin_store_offline">Showing cached list (updated %1$s). Refresh when the network is back.</string>
+    <string name="plugin_store_success">Installed</string>
+    <string name="plugin_store_updated">Updated</string>
+    <string name="plugin_store_install_failed">Install failed: %1$s</string>
+    <string name="plugin_store_deps">Required built-in methods</string>
+    <string name="plugin_store_env">Required environment variables</string>
+    <string name="plugin_store_author">Author</string>
+    <string name="plugin_store_version">Version</string>
+    <string name="plugin_store_source">Source</string>
+    <string name="plugin_store_source_loading">Loading source…</string>
+    <string name="plugin_store_source_failed">Failed to load source: %1$s</string>
+    <string name="plugin_store_source_info">%1$d lines</string>
+    <string name="plugin_store_local_modified">Locally modified. Updating will overwrite your changes.</string>
+    <string name="plugin_store_repo">Official repository</string>
+    <string name="plugin_store_enable_and_install">Enable and install</string>
+    <string name="plugin_store_err_empty">Plugin content is empty</string>
+    <string name="plugin_store_err_hash">File checksum mismatch, please retry later</string>
+    <string name="plugin_store_err_not_function">Plugin content is not in the function(msg, next) form</string>
+    <string name="plugin_store_err_commonjs">Plugin content contains CommonJS syntax</string>
+
+    <string name="post_url_error_tips">URLs should begin with http or https!</string>
+    <string name="post_url">Receive URL</string>
+    <string name="post_url_placeholder">URL, message receiving URL</string>
+    <string name="week">Week</string>
+    <string name="time">Time</string>
+    <string name="post_limit">Keywords include</string>
+    <string name="post_limit_placeholder">Keyword whitelist, multiple keywords separated by |</string>
+    <string name="post_omit">Keyword exclude</string>
+    <string name="post_omit_placeholder">Keyword blacklist, multiple keywords separated by |</string>
+    <string name="repost_push_key">Repost push_key</string>
+
+    <string name="message_not_exist_tips">The message has been deleted or does not exist!</string>
+    <string name="message_no_more">No more message!</string>
+    <string name="floating_permission_tips">Please set the floating window permissions first!</string>
+    <string name="leave_hold_view_prev">Leave hold to view the previous message</string>
+    <string name="scroll_down_view_prev">Scroll down to view the previous message</string>
+    <string name="scroll_down_view_next">Scroll up to see the next message</string>
+    <string name="leave_hold_view_next">Leave hold to view the next message</string>
+
+    <string name="small_dashboard">Small Dashboard</string>
+    <string name="sort">Sort</string>
+    <string name="sort_by">By</string>
+
+    <string name="web_default_title">External Webpage</string>
+
+    <string name="install_apk_permission_tips">Please grant the application installation permission first.</string>
+    <string name="install_permission_open_fail">Application installation failed to grant permissions.</string>
+    <string name="storage_permission_tips">Please enable storage permissions first.</string>
+    <string name="storage_permission_open_fail">Storage permission failed to be enabled</string>
+    <string name="download_start">Download start</string>
+    <string name="download_from">Download from</string>
+    <string name="progress">Progress</string>
+    <string name="app_update_title">New version discovered</string>
+    <string name="today_no_tips">Do not remind again today</string>
+    <string name="apk_install">Install</string>
+    <string name="apk_downloading">Downloading</string>
+    <string name="apk_download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="sure">Sure</string>
+    <string name="save">Save</string>
+    <string name="confirm_default_title">Tips</string>
+    <string name="confirm_default_content">Confirm operation?</string>
+
+    <string name="env_add">ENV Add</string>
+    <string name="env_edit">ENV Edit</string>
+    <string name="env_name">ENV Name</string>
+    <string name="env_value">ENV Value</string>
+
+    <string-array name="app_language_options">
+        <item>System</item>
+        <item>中文</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="on_off_options">
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="click_group_message_options">
+        <item>Group</item>
+        <item>Chat</item>
+        <item>Detail</item>
+    </string-array>
+    <string-array name="read_unread_options">
+        <item>Read</item>
+        <item>Unread</item>
+    </string-array>
+    <string-array name="link_open_options">
+        <item>System</item>
+        <item>PushMe</item>
+    </string-array>
+    <string-array name="app_theme_options">
+        <item>System</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
+    <string-array name="app_color_options">
+        <item>System</item>
+        <item>PushMe</item>
+        <item>Custom</item>
+    </string-array>
+    <string-array name="show_hide_options">
+        <item>Show</item>
+        <item>Hide</item>
+    </string-array>
+    <string-array name="status_notify_options">
+        <item>Notify</item>
+        <item>LimitSilent</item>
+        <item>Silent</item>
+        <item>OnlyDisconnect</item>
+        <item>Close</item>
+    </string-array>
+    <string-array name="speak_fields_options">
+        <item>Title</item>
+        <item>Content</item>
+        <item>Title+Content</item>
+    </string-array>
+    <string-array name="crash_log_options">
+        <item>Send</item>
+        <item>NotSend</item>
+        <item>Close</item>
+    </string-array>
+
+    <string-array name="status_notify_tips">
+        <item>Always show notifications</item>
+        <item>Always show notifications (mute temporarily)</item>
+        <item>Always show notifications (always mute)</item>
+        <item>Show notifications when disconnect</item>
+        <item>Not show notifications</item>
+    </string-array>
+
+    <string-array name="search_theme_options">
+        <item>All</item>
+        <item>Info</item>
+        <item>Success</item>
+        <item>Warning</item>
+        <item>Failure</item>
+    </string-array>
+    <string-array name="search_fields_options">
+        <item>Title</item>
+        <item>Content</item>
+        <item>Title+Content</item>
+    </string-array>
+    <string-array name="search_status_options">
+        <item>All</item>
+        <item>Read</item>
+        <item>Unread</item>
+        <item>Star</item>
+        <item>Unstar</item>
+    </string-array>
+    <string-array name="search_action_list">
+        <item>Set Read</item>
+        <item>Set Unread</item>
+        <item>Set Star</item>
+        <item>Set Unstar</item>
+        <item>Delete All</item>
+    </string-array>
+
+    <string-array name="mqtt_state_options">
+        <item>Close</item>
+        <item>PushMe</item>
+        <item>Self</item>
+    </string-array>
+
+    <string-array name="notify_app_filter_options">
+        <item>Close</item>
+        <item>Whitelist</item>
+        <item>Blacklist</item>
+    </string-array>
+
+    <string-array name="self_protocol_options">
+        <item>TCP</item>
+        <item>WebSocket</item>
+    </string-array>
+
+    <string-array name="self_tls_options">
+        <item>None</item>
+        <item>Public Certificate</item>
+        <item>Self-signed Certificate</item>
+    </string-array>
+</resources>

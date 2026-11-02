@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+    <!--前台服务：维持 MQTT 长连接，避免后台进程被系统冻结-->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"/>
+
+    <!--接收启动完成的广播权限-->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--悬浮窗-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!--振动反馈-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+
+    <!-- 存储权限 Android 10以下需要 -->
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />-->
+
+    <!-- 安装APK权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <!--应用过滤列表要列出设备上的应用，但 Android 11+ 有「软件包可见性过滤」：
+            PackageManager.getInstalledApplications() 只返回对本应用可见的应用。
+            声明 MAIN/LAUNCHER 这个 intent 签名后，所有带启动图标的应用都会对我们可见
+            （通知来源应用基本都是这一类），足以支撑应用过滤列表。
+            不加 QUERY_ALL_PACKAGES：它受 Google Play 政策限制，且没有启动图标的应用
+            基本不会发通知，收益不值这个代价。-->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <application
+        android:name="com.android.pushme.App"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PushMe"
+        android:usesCleartextTraffic="true"
+        android:enableOnBackInvokedCallback="false"
+        tools:targetApi="tiramisu">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:theme="@style/Theme.PushMe"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".ReceiverBootBroadcast"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".ReceiverNotificationAction"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter android:priority="1000">
+                <action android:name="com.android.pushme.MESSAGE"/>
+            </intent-filter>
+        </receiver>
+
+        <!--定时任务的闹钟接收器。
+            ⚠️ 必须静态注册：闹钟触发时进程很可能已经被系统回收，
+            动态注册的接收器根本不存在，广播会静默丢失。
+            PendingIntent 用的是显式 Intent（Intent(context, TaskReceiver::class.java)），
+            以本应用身份投递，所以 exported=false 也能收到，不需要 intent-filter。-->
+        <receiver
+            android:name=".task.TaskReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+<!--        <service android:name=".MQTTService" android:enabled="true" android:exported="true" android:process=":Service"/>-->
+        <!--foregroundServiceType=connectedDevice：维持到外部服务的网络长连接。
+            注意：不能用 dataSync，Android 15 起 BOOT_COMPLETED 不允许启动该类型的前台服务。-->
+        <service
+            android:name=".MQTTService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="connectedDevice"/>
+
+        <!--通知监听：读取其它应用的通知并转发到服务。
+            需要用户在「系统设置 - 通知 - 通知使用权」里手动授权，应用无法自行申请。
+            exported=false 即可：系统（特权系统组件）仍然可以绑定该服务。
+            注意：android:name 必须写成全限定类名。权限库（XXPermissions）做合规校验时，
+            是把清单里的 android:name 原样和 FQCN 做字符串比较的，写成 ".notify.XxxService" 会校验不通过。-->
+        <service
+            android:name="com.android.pushme.notify.NotifyListenerService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="@string/notify_listen"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <!-- FileProvider配置 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>
