@@ -17,7 +17,7 @@
   <a href="https://t.me/pushme_channel">
     <img src="https://img.shields.io/badge/Telegram-Channel-blue" alt="Telegram Channel">
   </a>
-  <a href="./assets/wechat-group.jpg?v=2">
+  <a href="./assets/wechat-group.jpg?v=3">
     <img src="https://img.shields.io/badge/微信交流群-green" alt="WeChat Group">
   </a>
 </p>
@@ -498,7 +498,7 @@ You may obtain a copy of the License at
 - 🧩 **插件仓库**：[https://github.com/yafoo/pushme-plugin](https://github.com/yafoo/pushme-plugin)
 - 💬 **微信交流群**：
 
-  <img src="./assets/wechat-group.jpg?v=2" width="200"/>
+  <img src="./assets/wechat-group.jpg?v=3" width="200"/>
 
 ### 常见问题
 
