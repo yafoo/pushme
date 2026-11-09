@@ -57,7 +57,13 @@ object EnvManager {
     }
 
     private fun saveEnvDataList() {
-        val serialized = envDataList.mapIndexed { index, data -> data.copy(order = index + 1) }.joinToString(";") { it.toPreferences() }
+        // 落盘时按当前顺序重排 order，并把重排结果写回内存，
+        // 避免删除/新增后内存里的 order 与磁盘不一致（order 重复会导致按 order 更新时一次改到多条）
+        val normalized = envDataList.mapIndexed { index, data -> data.copy(order = index + 1) }
+        if(normalized != envDataList) {
+            envDataList = normalized
+        }
+        val serialized = normalized.joinToString(";") { it.toPreferences() }
         AppDataStore.putData("env_data", serialized)
     }
 
@@ -71,6 +77,9 @@ object EnvManager {
         }
         envData.order = envDataList.size + 1
         envDataList = envDataList + envData
+        // 必须落盘：界面新增后会广播 refresh_plugins_env，服务端会 refreshEnvDataList()
+        // 从 DataStore 重新读，不落盘的话刚加进去的变量会被直接冲掉（列表又变空）
+        saveEnvDataList()
         return true
     }
 
