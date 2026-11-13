@@ -33,6 +33,8 @@ import com.android.pushme.utils.CacheUtil
 import com.android.pushme.utils.FaceManager
 import com.android.pushme.utils.FloatingMessage
 import com.android.pushme.utils.Settings
+import java.util.concurrent.Executors
+import java.util.concurrent.RejectedExecutionException
 
 
 const val KEY_SERVICE_ACTION = "ServiceAction"
@@ -76,6 +78,17 @@ class MQTTService: Service() {
     }
 
     private var floatingMessage: FloatingMessage? = null
+
+    /**
+     * 广播进来的消息（通知转发、定时任务）在后台线程处理。
+     *
+     * 插件是在消息处理链路里同步执行的，而插件里可以做同步 HTTP（比如网站检查，
+     * FetchObjExt 的默认超时是 30s）。跑在主线程会卡住广播接收器，轻则广播超时被丢，
+     * 重则 ANR。单线程是为了让这几条消息之间也串行，不会同时进插件。
+     */
+    private val eventExecutor = Executors.newSingleThreadExecutor { r ->
+        Thread(r, "pushme-event").apply { isDaemon = true }
+    }
 
     // 当前是否以前台服务方式运行
     private var isForeground = false
@@ -191,6 +204,9 @@ class MQTTService: Service() {
 
         // 注销广播接收器
         unregisterBroadcastReceivers()
+
+        // 注销后不会再有新事件进来，让已在队列里的消息处理完，然后收掉线程
+        eventExecutor.shutdown()
 
         // 销毁实际滞后，造成新连接被断开
         myMQTTClient?.disConnect()
@@ -425,9 +441,6 @@ class MQTTService: Service() {
     }
 
     inner class ServiceMQTTClient(serverUri: String, clientId: String, service: MQTTService, mqttAlarmReconnect: MQTTAlarmReconnect): MQTTClient(serverUri, clientId, service, mqttAlarmReconnect) {
-        // 定时关闭QuickJS
-        private var pingedTimes = 0
-
         override fun onConnecting() {
             super.onConnecting()
 
@@ -486,7 +499,9 @@ class MQTTService: Service() {
             super.onPinged()
             showStatus(getStatus(), true)
 
-            pingedTimes = messageProcessor.onPinged(pingedTimes)
+            // 空闲若干个心跳就把 QuickJS 关掉释放内存；计数在 MessageProcessor 里，
+            // 由 processMessage 负责清零（有消息往来就不算空闲）
+            messageProcessor.onPinged()
         }
 
         fun initChannelSet() {
@@ -554,6 +569,8 @@ class MQTTService: Service() {
      *
      * 所以这里既不需要解析也不需要包装，原样交给现成的消息处理链路即可。
      *
+     * ⚠️ 由 [eventExecutor] 的后台线程调用（见 ServiceReceiver），不在主线程。
+     *
      * @param rawMessage 监听服务包装好的消息 JSON
      */
     private fun handleNotifyEvent(rawMessage: String) {
@@ -575,6 +592,9 @@ class MQTTService: Service() {
      * 后面完全复用「插件 → 入库 → 通知 → 转发」的整条链路。
      *
      * 插件处理完如果 type 还是 task，MessageProcessor 会直接丢弃这条消息。
+     *
+     * ⚠️ 由 [eventExecutor] 的后台线程调用（见 ServiceReceiver），不在主线程：
+     * 「网站检查」这类插件会在 JS 里发同步 HTTP，放主线程会卡住广播接收器直到 ANR。
      *
      * @param rawMessage TaskScheduler 包装好的消息 JSON
      */
@@ -786,8 +806,32 @@ class MQTTService: Service() {
                     "refresh_message_set" -> refreshMessageSet()
                     "refresh_api_service" -> refreshApiService()
                     "refresh_foreground_mode" -> applyForegroundMode()
-                    KEY_SERVICE_ACTION_NOTIFY_EVENT -> handleNotifyEvent(getStringExtra(KEY_NOTIFY_EVENT_DATA) ?: "")
-                    KEY_SERVICE_ACTION_TASK_EVENT -> handleTaskEvent(getStringExtra(KEY_TASK_EVENT_DATA) ?: "")
+                    KEY_SERVICE_ACTION_NOTIFY_EVENT,
+                    KEY_SERVICE_ACTION_TASK_EVENT -> {
+                        // 这两条要走「插件 → 入库 → 通知 → 转发」整条链路，插件里可能有同步网络请求，
+                        // 所以丢到后台线程，不占主线程。
+                        // goAsync() 告诉系统这次广播是异步处理的（延长接收器存活时间），
+                        // 处理完必须 finish()，否则系统会认为接收器一直没返回。
+                        val isTask = action == KEY_SERVICE_ACTION_TASK_EVENT
+                        val data = getStringExtra(if(isTask) KEY_TASK_EVENT_DATA else KEY_NOTIFY_EVENT_DATA) ?: ""
+                        val pendingResult = goAsync()
+                        try {
+                            eventExecutor.execute {
+                                try {
+                                    if(isTask) handleTaskEvent(data) else handleNotifyEvent(data)
+                                } catch (t: Throwable) {
+                                    // 兜底：后台线程抛出去没人接，会直接变成进程崩溃
+                                    Log.e(tag, "消息处理失败: $data", t)
+                                } finally {
+                                    pendingResult.finish()
+                                }
+                            }
+                        } catch (e: RejectedExecutionException) {
+                            // 服务正在销毁，线程池已经 shutdown（见 onDestroy），这条事件只能丢弃
+                            Log.w(tag, "事件线程已关闭，丢弃消息: $data")
+                            pendingResult.finish()
+                        }
+                    }
                 }
             }
         }

@@ -14,6 +14,7 @@ import com.android.pushme.utils.Settings
 import androidx.work.workDataOf
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
+import java.util.concurrent.atomic.AtomicInteger
 
 /**
  * 消息处理器
@@ -25,6 +26,21 @@ class MessageProcessor(private val context: Context) {
     private val messageDao: MessageDao = AppDataBase.instance.getMessageDao()
     private val plugin = Plugin(context)
     private val gson = Gson()
+
+    /**
+     * 插件空闲计数：每处理一条消息清零，连续 [PLUGIN_IDLE_PING_LIMIT] 次心跳都没有消息，
+     * 才认为插件空闲、可以关掉 QuickJS 释放内存。
+     *
+     * 用原子量是因为 processMessage 会从三个线程进来：主线程（广播）、
+     * Paho 回调线程（MQTT onMessage）、API 服务线程池（HTTP 推送），
+     * 而心跳回调又在 Paho 线程里读改写这个计数。
+     */
+    private val pluginIdlePings = AtomicInteger(0)
+
+    private companion object {
+        /** 连续这么多次心跳都没有消息往来，才关闭 QuickJS */
+        const val PLUGIN_IDLE_PING_LIMIT = 2
+    }
 
     /**
      * 消息处理结果
@@ -44,6 +60,10 @@ class MessageProcessor(private val context: Context) {
      * @return 处理结果，JSON 解析失败或内容为空时返回 null
      */
     fun processMessage(rawMessage: String): ProcessResult? {
+        // 有消息往来，说明插件刚用过 / 马上要用，空闲计数从头算。
+        // （这一步原来漏了：心跳那侧只自增不重置，第二次心跳之后 times 永远卡在 2，
+        //   等于此后每次心跳都去销毁 runtime，插件刚建好的 runtime 一个心跳就被关掉）
+        pluginIdlePings.set(0)
         return try {
             // 收到消息通知
             // fromJson 对空串之类会返回 null，这里必须拦住，否则后面取属性就是 NPE
@@ -219,16 +239,21 @@ class MessageProcessor(private val context: Context) {
     }
 
     /**
-     * Ping回调，用于定时关闭QuickJS
-     * @param pingedTimes 当前ping计数（由调用方维护）
-     * @return 更新后的ping计数
+     * MQTT 心跳回调：连续 [PLUGIN_IDLE_PING_LIMIT] 次心跳都没有消息往来时，
+     * 关闭 QuickJS 释放内存。
+     *
+     * 计数不再由调用方传进来：它得在 processMessage 里重置，而 processMessage
+     * 有三个线程的入口，交给调用方维护必然漏（之前就是漏了，计数卡在 2 不动）。
+     *
+     * 关闭是幂等的：runtime 原本就按需创建（见 Plugin.initQuickJS），
+     * 空闲期销毁不会引起重建，只有下一条真正需要插件的消息才会重新建 runtime。
      */
-    fun onPinged(pingedTimes: Int): Int {
-        var times = pingedTimes
-        if(times < 2) times++
-        if(times == 2) {
+    fun onPinged() {
+        if(pluginIdlePings.incrementAndGet() >= PLUGIN_IDLE_PING_LIMIT) {
+            // 关完回 0，下轮要再连续空闲这么多次才会再关；
+            // 不置位的话每次心跳都会白排一次销毁任务进插件线程。
+            pluginIdlePings.set(0)
             plugin.destroy()
         }
-        return times
     }
 }
