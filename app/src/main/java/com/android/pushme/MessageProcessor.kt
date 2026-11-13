@@ -62,9 +62,13 @@ class MessageProcessor(private val context: Context) {
                     date = pluginMessage.date
                     type = pluginMessage.type
                     Log.d(tag, "插件处理 title: $title, content: $content, date: $date, type: $type")
-                } catch (e: Exception) {
-                    Log.e(tag, e.toString())
-                    val error = e.message?.split("ReferenceError:")?.getOrNull(1) ?: e.message
+                } catch (t: Throwable) {
+                    // 注意这里是 Throwable 而不是 Exception：
+                    // QuickJS 在 runtime 被关闭 / 跨线程使用时会抛 java.lang.Error
+                    //（例如 "Context disposed error"），它不属于 Exception，
+                    // 之前会一路冒到 BroadcastReceiver.onReceive 直接把 App 搞崩。
+                    Log.e(tag, t.toString())
+                    val error = t.message?.split("ReferenceError:")?.getOrNull(1) ?: t.message
                     context.showToast("插件Error: ${error?.trim()}", Toast.LENGTH_LONG)
                 }
             }
